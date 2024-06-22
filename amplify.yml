@@ -26,7 +26,7 @@ applications:
           commands:
             - echo "No build needed for Express.js app"
       artifacts:
-        baseDirectory: server
+        baseDirectory: server/bin
         files:
           - '**/*'
       cache:
