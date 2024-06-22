@@ -16,13 +16,15 @@ applications:
       cache:
         paths:
           - node_modules/**/*
-
   - backend:
       phases:
         preBuild:
           commands:
             - cd server
             - npm install
+        build:
+          commands:
+            - echo "No build needed for Express.js app"
       artifacts:
         baseDirectory: server
         files:
