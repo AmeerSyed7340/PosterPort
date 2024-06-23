@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
-const { S3Client, ListObjectsV2Command, GetObjectCommand, PutObjectCommand } = require("@aws-sdk/client-s3");
+const { S3Client, ListObjectsV2Command, GetObjectCommand } = require("@aws-sdk/client-s3");
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const { Upload } = require("@aws-sdk/lib-storage");
 
