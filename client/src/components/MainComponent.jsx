@@ -27,7 +27,7 @@ function MainComponent() {
     { path: "/payment", element: <Payment /> },
     {
       path: "/cart",
-      element: <Cart counts={counts} setCounts={setCounts} incrementCount={incrementCount} decrementCount={decrementCount}/>,
+      element: <Cart counts={counts} setCounts={setCounts} incrementCount={incrementCount} decrementCount={decrementCount} />,
     },
     {
       path: "/form",
@@ -37,7 +37,10 @@ function MainComponent() {
       path: "/aiPosters",
       element: <AiImages />,
     }
-  ]);
+  ], {
+    // Add the basename here
+    basename: "/PosterPort"
+  });
 
   useEffect(() => {
     // Initialize counts state with each poster having a count of 0
