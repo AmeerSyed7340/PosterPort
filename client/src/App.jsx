@@ -3,6 +3,7 @@ import SearchBar from "./components/SearchBar";
 import Card from "./components/Card";
 import CartButton from "./components/CartButton";
 import Hero from "./components/Hero";
+import AiImagesBtn from "./components/AiImagesBtn";
 import { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { MdOutlinePayment } from "react-icons/md";
@@ -87,7 +88,11 @@ export default function App({ counts, incrementCount }) {
           setCategory={setCategory}
           setFilteredResults={setFilteredResults}
         />
-
+        <div className="w-full bg-indigo-500 text-yellow-400 rounded-md m-2 p-2 text-center">
+          <Link to="/aiPosters">
+            <AiImagesBtn />
+          </Link>
+        </div>
         <div className="my-2 flex w-full justify-end items-center">
           <Link to="/form">
             <button className="flex gap-2 items-center bg-black text-white border rounded-md m-2 p-2 hover:scale-105">
