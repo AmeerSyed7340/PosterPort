@@ -5,7 +5,7 @@ import { RxArrowTopRight } from "react-icons/rx";
 const Form = () => {
   const [prompt, setPrompt] = useState("");
   const [url, setUrl] = useState("");
-  const [loading, setLoading] = useState(false);  // State to track loading status
+  const [loading, setLoading] = useState(false); // State to track loading status
 
   const handleChange = (e) => {
     setPrompt(e.target.value);
@@ -13,23 +13,37 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);  // Start loading
+    setLoading(true); // Start loading
 
     setUrl("");
     setPrompt("");
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_BASE_URL}posters/submit`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ prompt }),
-      });
+      // const response = await fetch(`${import.meta.env.VITE_BASE_URL}/Prompt`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({ prompt }),
+      // });
+      // const data = await response.json();
+      // console.log(data);
+      // setUrl(data.imageUrl);
+      // setLoading(false);  // Stop loading (after setting the URL
+      const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/Prompt`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ prompt }),
+        }
+      );
       const data = await response.json();
       console.log(data);
       setUrl(data.imageUrl);
-      setLoading(false);  // Stop loading (after setting the URL
+      setLoading(false); // Stop loading (after setting the URL)
     } catch (error) {
       console.error(error);
     }
@@ -61,7 +75,17 @@ const Form = () => {
             </button>
           </Link>
         </form>
-        {loading ? <div>Loading...</div> : url && <img src={url} alt="Generated" className="rounded-lg w-full mt-2 border-2" />}
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          url && (
+            <img
+              src={url}
+              alt="Generated"
+              className="rounded-lg w-full mt-2 border-2"
+            />
+          )
+        )}
       </div>
     </div>
   );
@@ -73,5 +97,5 @@ const Ima = ({ url }) => {
       <img src={url} className="rounded-lg w-full mt-2 border-2" />
     </div>
   );
-}
+};
 export default Form;
